@@ -12,30 +12,30 @@ export function RewardWallet({ onBack }: RewardWalletProps) {
   const { user } = useAppContext();
 
   const transactions = [
-    { id: '1', type: 'earn', amount: 10, description: 'Played Cooking Game', date: new Date(Date.now() - 2 * 60 * 60 * 1000) },
-    { id: '2', type: 'earn', amount: 20, description: 'Daily Check-in', date: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000) },
-    { id: '3', type: 'spend', amount: -50, description: 'Skipped Queue', date: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000) },
-    { id: '4', type: 'earn', amount: 15, description: 'Left a Review', date: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000) },
-    { id: '5', type: 'earn', amount: 30, description: 'Member Bonus', date: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000) },
+    { id: '1', type: 'earn', amount: 10, description: 'เล่นเกมทำอาหาร', date: new Date(Date.now() - 2 * 60 * 60 * 1000) },
+    { id: '2', type: 'earn', amount: 20, description: 'เช็คอินรายวัน', date: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000) },
+    { id: '3', type: 'spend', amount: -50, description: 'ข้ามคิว', date: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000) },
+    { id: '4', type: 'earn', amount: 15, description: 'เขียนรีวิว', date: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000) },
+    { id: '5', type: 'earn', amount: 30, description: 'โบนัสสมาชิก', date: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000) },
   ];
 
   const rewards = [
-    { id: '1', name: 'Free Dessert', cost: 100, icon: '🍰', available: user && user.coins >= 100 },
-    { id: '2', name: 'Skip Queue', cost: 50, icon: '⚡', available: user && user.coins >= 50 },
-    { id: '3', name: '10% Off', cost: 80, icon: '💰', available: user && user.coins >= 80 },
-    { id: '4', name: 'Free Drink', cost: 60, icon: '🥤', available: user && user.coins >= 60 },
-    { id: '5', name: 'Priority Seating', cost: 120, icon: '🪑', available: user && user.coins >= 120 },
-    { id: '6', name: 'Chef Special', cost: 200, icon: '👨‍🍳', available: user && user.coins >= 200 },
+    { id: '1', name: 'ของหวานฟรี', cost: 100, icon: '🍰', available: user && user.coins >= 100 },
+    { id: '2', name: 'ข้ามคิว', cost: 50, icon: '⚡', available: user && user.coins >= 50 },
+    { id: '3', name: 'ลด 10%', cost: 80, icon: '💰', available: user && user.coins >= 80 },
+    { id: '4', name: 'เครื่องดื่มฟรี', cost: 60, icon: '🥤', available: user && user.coins >= 60 },
+    { id: '5', name: 'ที่นั่งพิเศษ', cost: 120, icon: '🪑', available: user && user.coins >= 120 },
+    { id: '6', name: 'เมนูพิเศษจากเชฟ', cost: 200, icon: '👨‍🍳', available: user && user.coins >= 200 },
   ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-yellow-50 to-orange-50">
       <div className="sticky top-0 z-10 bg-white/80 backdrop-blur-sm border-b p-4">
         <div className="max-w-md mx-auto flex items-center justify-between">
-          <Button variant="ghost" onClick={onBack}>← Back</Button>
+          <Button variant="ghost" onClick={onBack}>← กลับ</Button>
           <div className="flex items-center gap-2">
             <Coins className="w-5 h-5" />
-            <span>Hiu Hiu Hiu Wallet</span>
+            <span>กระเป๋าเงิน หิว หิว หิว</span>
           </div>
         </div>
       </div>
@@ -46,13 +46,13 @@ export function RewardWallet({ onBack }: RewardWalletProps) {
           <div className="text-center space-y-3">
             <div className="text-5xl">💰</div>
             <div>
-              <p className="text-white/80 text-sm">Your Balance</p>
+              <p className="text-white/80 text-sm">ยอดคงเหลือของคุณ</p>
               <h1 className="text-white text-4xl">{user?.coins || 0}</h1>
-              <p className="text-white/80 text-sm">Hiu Hiu Hiu Coins</p>
+              <p className="text-white/80 text-sm">เหรียญ หิว หิว หิว</p>
             </div>
             <div className="flex items-center justify-center gap-2 text-sm bg-white/20 px-4 py-2 rounded-full w-fit mx-auto">
               <TrendingUp className="w-4 h-4" />
-              <span>+75 this month</span>
+              <span>+75 ในเดือนนี้</span>
             </div>
           </div>
         </Card>
@@ -61,17 +61,17 @@ export function RewardWallet({ onBack }: RewardWalletProps) {
         <div className="grid grid-cols-3 gap-3">
           <Card className="p-4 text-center">
             <div className="text-2xl mb-1">⭐</div>
-            <p className="text-sm text-muted-foreground">Level</p>
-            <p>Gold</p>
+            <p className="text-sm text-muted-foreground">ระดับ</p>
+            <p>ทอง</p>
           </Card>
           <Card className="p-4 text-center">
             <div className="text-2xl mb-1">🎯</div>
-            <p className="text-sm text-muted-foreground">Earned</p>
+            <p className="text-sm text-muted-foreground">ได้รับ</p>
             <p>450</p>
           </Card>
           <Card className="p-4 text-center">
             <div className="text-2xl mb-1">🏆</div>
-            <p className="text-sm text-muted-foreground">Rank</p>
+            <p className="text-sm text-muted-foreground">อันดับ</p>
             <p>#124</p>
           </Card>
         </div>
@@ -79,7 +79,7 @@ export function RewardWallet({ onBack }: RewardWalletProps) {
         {/* Earn More Section */}
         <Card className="p-4 bg-white">
           <div className="flex items-center justify-between mb-4">
-            <h3>Earn More Coins</h3>
+            <h3>รับเหรียญเพิ่ม</h3>
             <Gift className="w-5 h-5 text-orange-500" />
           </div>
           <div className="space-y-2">
@@ -89,8 +89,8 @@ export function RewardWallet({ onBack }: RewardWalletProps) {
                   🎮
                 </div>
                 <div>
-                  <p className="text-sm">Play Cooking Game</p>
-                  <p className="text-xs text-muted-foreground">+10 coins per game</p>
+                  <p className="text-sm">เล่นเกมทำอาหาร</p>
+                  <p className="text-xs text-muted-foreground">+10 เหรียญต่อเกม</p>
                 </div>
               </div>
               <Badge variant="secondary">+10</Badge>
@@ -101,8 +101,8 @@ export function RewardWallet({ onBack }: RewardWalletProps) {
                   ⭐
                 </div>
                 <div>
-                  <p className="text-sm">Leave a Review</p>
-                  <p className="text-xs text-muted-foreground">+15 coins per review</p>
+                  <p className="text-sm">เขียนรีวิว</p>
+                  <p className="text-xs text-muted-foreground">+15 เหรียญต่อรีวิว</p>
                 </div>
               </div>
               <Badge variant="secondary">+15</Badge>
@@ -113,8 +113,8 @@ export function RewardWallet({ onBack }: RewardWalletProps) {
                   📅
                 </div>
                 <div>
-                  <p className="text-sm">Daily Check-in</p>
-                  <p className="text-xs text-muted-foreground">+20 coins daily</p>
+                  <p className="text-sm">เช็คอินรายวัน</p>
+                  <p className="text-xs text-muted-foreground">+20 เหรียญทุกวัน</p>
                 </div>
               </div>
               <Badge variant="secondary">+20</Badge>
@@ -124,7 +124,7 @@ export function RewardWallet({ onBack }: RewardWalletProps) {
 
         {/* Redeem Rewards */}
         <Card className="p-4 bg-white">
-          <h3 className="mb-4">Redeem Rewards</h3>
+          <h3 className="mb-4">แลกรางวัล</h3>
           <div className="grid grid-cols-2 gap-3">
             {rewards.map(reward => (
               <Card
@@ -148,7 +148,7 @@ export function RewardWallet({ onBack }: RewardWalletProps) {
 
         {/* Transaction History */}
         <Card className="p-4 bg-white">
-          <h3 className="mb-4">Recent Activity</h3>
+          <h3 className="mb-4">กิจกรรมล่าสุด</h3>
           <div className="space-y-3">
             {transactions.map(transaction => (
               <div key={transaction.id} className="flex items-center justify-between pb-3 border-b last:border-0">

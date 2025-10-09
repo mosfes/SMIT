@@ -51,10 +51,10 @@ export function OrderQueueDashboard({ onOrderSelect }: OrderQueueDashboardProps)
 
   const getTimeSince = (date: Date) => {
     const minutes = Math.floor((Date.now() - date.getTime()) / (1000 * 60));
-    if (minutes < 1) return 'Just now';
-    if (minutes < 60) return `${minutes}m ago`;
+    if (minutes < 1) return 'เมื่อสักครู่';
+    if (minutes < 60) return `${minutes} นาทีที่แล้ว`;
     const hours = Math.floor(minutes / 60);
-    return `${hours}h ago`;
+    return `${hours} ชั่วโมงที่แล้ว`;
   };
 
   return (
@@ -62,8 +62,8 @@ export function OrderQueueDashboard({ onOrderSelect }: OrderQueueDashboardProps)
       {/* Header */}
       <div className="bg-white border-b p-6">
         <div className="max-w-7xl mx-auto">
-          <h1>Order Queue</h1>
-          <p className="text-muted-foreground">Real-time order management</p>
+          <h1>คิวออเดอร์</h1>
+          <p className="text-muted-foreground">การจัดการออเดอร์แบบเรียลไทม์</p>
         </div>
       </div>
 
@@ -73,7 +73,7 @@ export function OrderQueueDashboard({ onOrderSelect }: OrderQueueDashboardProps)
           <Card className="p-4 bg-gradient-to-br from-yellow-50 to-orange-50 border-yellow-200">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-muted-foreground">Pending</p>
+                <p className="text-sm text-muted-foreground">รอคิว</p>
                 <p className="text-3xl">{statusCounts.pending}</p>
               </div>
               <div className="p-3 bg-yellow-500 rounded-lg">
@@ -84,7 +84,7 @@ export function OrderQueueDashboard({ onOrderSelect }: OrderQueueDashboardProps)
           <Card className="p-4 bg-gradient-to-br from-orange-50 to-red-50 border-orange-200">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-muted-foreground">Cooking</p>
+                <p className="text-sm text-muted-foreground">กำลังทำ</p>
                 <p className="text-3xl">{statusCounts.cooking}</p>
               </div>
               <div className="p-3 bg-orange-500 rounded-lg">
@@ -95,7 +95,7 @@ export function OrderQueueDashboard({ onOrderSelect }: OrderQueueDashboardProps)
           <Card className="p-4 bg-gradient-to-br from-green-50 to-emerald-50 border-green-200">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-muted-foreground">Ready</p>
+                <p className="text-sm text-muted-foreground">พร้อมเสิร์ฟ</p>
                 <p className="text-3xl">{statusCounts.ready}</p>
               </div>
               <div className="p-3 bg-green-500 rounded-lg">
@@ -106,7 +106,7 @@ export function OrderQueueDashboard({ onOrderSelect }: OrderQueueDashboardProps)
           <Card className="p-4 bg-gradient-to-br from-blue-50 to-cyan-50 border-blue-200">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-muted-foreground">Total Today</p>
+                <p className="text-sm text-muted-foreground">ทั้งหมดวันนี้</p>
                 <p className="text-3xl">{orders.length}</p>
               </div>
               <div className="p-3 bg-blue-500 rounded-lg">
@@ -122,10 +122,10 @@ export function OrderQueueDashboard({ onOrderSelect }: OrderQueueDashboardProps)
         <div className="max-w-7xl mx-auto">
           <Tabs value={filterStatus} onValueChange={(v) => setFilterStatus(v as any)}>
             <TabsList>
-              <TabsTrigger value="all">All Orders</TabsTrigger>
-              <TabsTrigger value="pending">Pending</TabsTrigger>
-              <TabsTrigger value="cooking">Cooking</TabsTrigger>
-              <TabsTrigger value="ready">Ready</TabsTrigger>
+              <TabsTrigger value="all">ออเดอร์ทั้งหมด</TabsTrigger>
+              <TabsTrigger value="pending">รอคิว</TabsTrigger>
+              <TabsTrigger value="cooking">กำลังทำ</TabsTrigger>
+              <TabsTrigger value="ready">พร้อมเสิร์ฟ</TabsTrigger>
             </TabsList>
           </Tabs>
 
@@ -147,12 +147,12 @@ export function OrderQueueDashboard({ onOrderSelect }: OrderQueueDashboardProps)
                         </Badge>
                       </div>
                       <p className="text-sm text-muted-foreground">
-                        Table {order.tableNumber || '-'}
+                        โต๊ะ {order.tableNumber || '-'}
                       </p>
                     </div>
                     <Badge className={getStatusColor(order.status)}>
                       {getStatusIcon(order.status)}
-                      <span className="ml-1 capitalize">{order.status}</span>
+                      <span className="ml-1 capitalize">{order.status === 'pending' ? 'รอคิว' : order.status === 'cooking' ? 'กำลังทำ' : order.status === 'ready' ? 'พร้อมเสิร์ฟ' : 'เสร็จสิ้น'}</span>
                     </Badge>
                   </div>
 
@@ -187,7 +187,7 @@ export function OrderQueueDashboard({ onOrderSelect }: OrderQueueDashboardProps)
                         className="flex-1"
                         size="sm"
                       >
-                        Start Cooking
+                        เริ่มทำอาหาร
                       </Button>
                     )}
                     {order.status === 'cooking' && (
@@ -199,7 +199,7 @@ export function OrderQueueDashboard({ onOrderSelect }: OrderQueueDashboardProps)
                         className="flex-1 bg-green-500 hover:bg-green-600"
                         size="sm"
                       >
-                        Mark Ready
+                        ทำเครื่องหมายว่าพร้อมเสิร์ฟ
                       </Button>
                     )}
                     {order.status === 'ready' && (
@@ -211,7 +211,7 @@ export function OrderQueueDashboard({ onOrderSelect }: OrderQueueDashboardProps)
                         className="flex-1 bg-gray-500 hover:bg-gray-600"
                         size="sm"
                       >
-                        Complete
+                        เสร็จสิ้น
                       </Button>
                     )}
                   </div>
@@ -223,9 +223,9 @@ export function OrderQueueDashboard({ onOrderSelect }: OrderQueueDashboardProps)
           {filteredOrders.length === 0 && (
             <Card className="p-12 text-center">
               <div className="text-6xl mb-4">🍽️</div>
-              <h3>No orders</h3>
+              <h3>ไม่มีออเดอร์</h3>
               <p className="text-muted-foreground">
-                {filterStatus === 'all' ? 'No orders yet' : `No ${filterStatus} orders`}
+                {filterStatus === 'all' ? 'ยังไม่มีออเดอร์' : `ไม่มีออเดอร์ที่ ${filterStatus}`}
               </p>
             </Card>
           )}

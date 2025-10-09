@@ -11,9 +11,9 @@ export function QRLanding({ onSelectMode }: QRLandingProps) {
     <div className="min-h-screen bg-gradient-to-br from-orange-50 to-yellow-50 p-6 flex flex-col items-center justify-center">
       <div className="max-w-md w-full space-y-8">
         <div className="text-center space-y-2">
-          <h1 className="text-4xl">🍜 Hiu Hiu Hiu</h1>
-          <h2>Welcome to Table #5</h2>
-          <p className="text-muted-foreground">Choose your ordering style</p>
+          <h1 className="text-4xl">🍜 หิว หิว หิว</h1>
+          <h2>ยินดีต้อนรับสู่โต๊ะ #5</h2>
+          <p className="text-muted-foreground">เลือกสไตล์การสั่งอาหารของคุณ</p>
         </div>
 
         <div className="grid gap-4">
@@ -26,13 +26,13 @@ export function QRLanding({ onSelectMode }: QRLandingProps) {
                 <Gamepad2 className="w-8 h-8" />
               </div>
               <div className="flex-1 space-y-2">
-                <h3 className="text-white">🎮 Cooking Game Mode</h3>
+                <h3 className="text-white">🎮 โหมดเกมทำอาหาร</h3>
                 <p className="text-sm text-white/90">
-                  Play a fun mini cooking game! Mix ingredients, cook your dish, and submit it as your order.
+                  เล่นมินิเกมทำอาหารสนุกๆ! ผสมส่วนผสม ปรุงอาหาร และส่งเป็นออเดอร์ของคุณ
                 </p>
                 <div className="inline-flex items-center gap-1 text-sm bg-white/20 px-3 py-1 rounded-full">
                   <span>✨</span>
-                  <span>Earn extra coins!</span>
+                  <span>รับเหรียญพิเศษ!</span>
                 </div>
               </div>
             </div>
@@ -47,13 +47,13 @@ export function QRLanding({ onSelectMode }: QRLandingProps) {
                 <Coffee className="w-8 h-8" />
               </div>
               <div className="flex-1 space-y-2">
-                <h3 className="text-white">😴 Lazy Cook Mode</h3>
+                <h3 className="text-white">😴 โหมด Lazy Cook</h3>
                 <p className="text-sm text-white/90">
-                  Just want to order? Browse the menu and place your order directly. Quick and easy!
+                  แค่อยากสั่งอาหาร? เลือกดูเมนูและสั่งอาหารได้โดยตรง รวดเร็วและง่ายดาย!
                 </p>
                 <div className="inline-flex items-center gap-1 text-sm bg-white/20 px-3 py-1 rounded-full">
                   <span>⚡</span>
-                  <span>Fast ordering</span>
+                  <span>สั่งอาหารรวดเร็ว</span>
                 </div>
               </div>
             </div>
@@ -61,7 +61,7 @@ export function QRLanding({ onSelectMode }: QRLandingProps) {
         </div>
 
         <div className="text-center text-sm text-muted-foreground">
-          <p>💡 First time here? Try the Cooking Game!</p>
+          <p>💡 มาครั้งแรก? ลองเล่นเกมทำอาหารสิ!</p>
         </div>
       </div>
     </div>

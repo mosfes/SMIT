@@ -32,10 +32,10 @@ function PlatformSelector({ onSelect }: { onSelect: (platform: string) => void }
       <div className="max-w-4xl w-full space-y-8">
         <div className="text-center space-y-4">
           <div className="text-6xl">🍜</div>
-          <h1 className="text-5xl">Hiu Hiu Hiu</h1>
-          <h2>Restaurant Ordering System</h2>
+          <h1 className="text-5xl">หิว หิว หิว</h1>
+          <h2>ระบบสั่งอาหารของร้านอาหาร</h2>
           <p className="text-muted-foreground">
-            Select a platform to explore the demo
+            เลือกแพลตฟอร์มเพื่อสำรวจเดโม
           </p>
         </div>
 
@@ -49,14 +49,14 @@ function PlatformSelector({ onSelect }: { onSelect: (platform: string) => void }
                 <QrCode className="w-12 h-12" />
               </div>
               <div>
-                <h3 className="text-white text-xl">QR Ordering</h3>
+                <h3 className="text-white text-xl">สั่งอาหารผ่าน QR</h3>
                 <p className="text-white/90 text-sm mt-2">
-                  Table-side ordering with Cooking Game or Lazy Cook mode
+                  สั่งอาหารที่โต๊ะด้วยโหมดเกมทำอาหารหรือโหมด Lazy Cook
                 </p>
               </div>
               <div className="pt-4">
                 <Button className="w-full bg-white text-purple-600 hover:bg-white/90">
-                  Launch Demo
+                  เปิดเดโม
                 </Button>
               </div>
             </div>
@@ -71,14 +71,14 @@ function PlatformSelector({ onSelect }: { onSelect: (platform: string) => void }
                 <Smartphone className="w-12 h-12" />
               </div>
               <div>
-                <h3 className="text-white text-xl">Customer App</h3>
+                <h3 className="text-white text-xl">แอปสำหรับลูกค้า</h3>
                 <p className="text-white/90 text-sm mt-2">
-                  Engagement hub with games, AI chat, and community
+                  ศูนย์รวมความบันเทิงพร้อมเกม, แชท AI และชุมชน
                 </p>
               </div>
               <div className="pt-4">
                 <Button className="w-full bg-white text-blue-600 hover:bg-white/90">
-                  Launch Demo
+                  เปิดเดโม
                 </Button>
               </div>
             </div>
@@ -93,14 +93,14 @@ function PlatformSelector({ onSelect }: { onSelect: (platform: string) => void }
                 <Monitor className="w-12 h-12" />
               </div>
               <div>
-                <h3 className="text-white text-xl">iPad Dashboard</h3>
+                <h3 className="text-white text-xl">แดชบอร์ด iPad</h3>
                 <p className="text-white/90 text-sm mt-2">
-                  Real-time order management and business analytics
+                  การจัดการออเดอร์แบบเรียลไทม์และการวิเคราะห์ธุรกิจ
                 </p>
               </div>
               <div className="pt-4">
                 <Button className="w-full bg-white text-orange-600 hover:bg-white/90">
-                  Launch Demo
+                  เปิดเดโม
                 </Button>
               </div>
             </div>
@@ -108,7 +108,7 @@ function PlatformSelector({ onSelect }: { onSelect: (platform: string) => void }
         </div>
 
         <div className="text-center text-sm text-muted-foreground">
-          <p>💡 This is a complete prototype of all three integrated systems</p>
+          <p>💡 นี่คือต้นแบบที่สมบูรณ์ของทั้งสามระบบที่ทำงานร่วมกัน</p>
         </div>
       </div>
     </div>
@@ -131,7 +131,7 @@ function QRPlatform() {
             name: dishName,
             price: 150,
             image: 'https://images.unsplash.com/photo-1665088127661-83aeff6104c4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb29raW5nJTIwaW5ncmVkaWVudHMlMjB2ZWdldGFibGVzfGVufDF8fHx8MTc1OTc0ODIyMHww&ixlib=rb-4.1.0&q=80&w=1080',
-            description: `Custom dish with ${ingredients.map(i => i.name).join(', ')}`,
+            description: `จานพิเศษพร้อม ${ingredients.map(i => i.name).join(', ')}`,
             category: 'main',
             spicyLevel: 1,
             isAvailable: true,
@@ -236,8 +236,8 @@ function DashboardPlatform() {
       {/* Sidebar */}
       <div className="w-64 bg-white border-r p-4 space-y-2">
         <div className="p-4 mb-6">
-          <h2 className="text-xl">🍜 Dashboard</h2>
-          <p className="text-sm text-muted-foreground">Restaurant Admin</p>
+          <h2 className="text-xl">🍜 แดชบอร์ด</h2>
+          <p className="text-sm text-muted-foreground">ผู้ดูแลระบบร้านอาหาร</p>
         </div>
         
         <Button
@@ -245,21 +245,21 @@ function DashboardPlatform() {
           className="w-full justify-start"
           onClick={() => setScreen('orders')}
         >
-          📋 Order Queue
+          📋 คิวออเดอร์
         </Button>
         <Button
           variant={screen === 'sales' ? 'default' : 'ghost'}
           className="w-full justify-start"
           onClick={() => setScreen('sales')}
         >
-          📊 Sales Performance
+          📊 ยอดขาย
         </Button>
         <Button
           variant={screen === 'reviews' ? 'default' : 'ghost'}
           className="w-full justify-start"
           onClick={() => setScreen('reviews')}
         >
-          ⭐ Reviews
+          ⭐ รีวิว
         </Button>
       </div>
 
@@ -289,7 +289,7 @@ function AppContent() {
           variant="outline"
           className="bg-white/90 backdrop-blur-sm shadow-lg"
         >
-          ← Back to Selector
+          ← กลับไปหน้าเลือก
         </Button>
       </div>
 

@@ -20,7 +20,7 @@ export function AIChat({ onBack }: AIChatProps) {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: "Hi there! 👋 I'm your dining companion. I can recommend dishes, chat about food, or just keep you company while you dine!",
+      text: "สวัสดี! 👋 ฉันคือเพื่อนร่วมโต๊ะของคุณ ฉันสามารถแนะนำอาหาร พูดคุยเรื่องอาหาร หรือแค่อยู่เป็นเพื่อนคุณระหว่างทานอาหารได้!",
       sender: 'ai',
       timestamp: new Date(),
     },
@@ -34,14 +34,14 @@ export function AIChat({ onBack }: AIChatProps) {
   }, [messages]);
 
   const aiResponses = [
-    "That sounds delicious! Have you tried our Pad Thai? It's a customer favorite! 🍜",
-    "I'd love to hear more about that! Food brings people together, doesn't it? 😊",
-    "Great choice! Would you like it spicy or mild?",
-    "Fun fact: Thai cuisine balances five fundamental flavors - sweet, salty, sour, bitter, and spicy!",
-    "If you're feeling adventurous, I recommend trying our Tom Yum soup. It's got quite a kick! 🌶️",
-    "That reminds me of a popular Thai saying: 'Eat rice yet?' - it's how we ask 'How are you?' 🍚",
-    "Solo dining is actually pretty great! It's a chance to really savor your meal and relax.",
-    "Our chef's special today is amazing! Want to know what's in it?",
+    "ฟังดูน่าอร่อย! คุณเคยลองผัดไทยของเราหรือยัง? เป็นเมนูโปรดของลูกค้าเลยนะ! 🍜",
+    "ฉันอยากฟังเรื่องนั้นอีก! อาหารทำให้คนใกล้ชิดกันมากขึ้นใช่ไหม? 😊",
+    "เป็นตัวเลือกที่ยอดเยี่ยม! คุณต้องการแบบเผ็ดหรือเผ็ดน้อย?",
+    "เกร็ดน่ารู้: อาหารไทยมีความสมดุลของ 5 รสชาติพื้นฐาน - หวาน, เค็ม, เปรี้ยว, ขม และเผ็ด!",
+    "ถ้าคุณรู้สึกอยากผจญภัย ฉันขอแนะนำให้ลองต้มยำกุ้งของเรา มันมีรสชาติจัดจ้านมาก! 🌶️",
+    "นั่นทำให้ฉันนึกถึงคำพูดไทยยอดนิยม: 'กินข้าวหรือยัง?' - เป็นวิธีที่เราถามว่า 'เป็นอย่างไรบ้าง?' 🍚",
+    "การทานอาหารคนเดียวก็ดีเหมือนกันนะ! เป็นโอกาสที่จะได้ลิ้มรสอาหารและผ่อนคลายอย่างแท้จริง",
+    "เมนูพิเศษของเชฟวันนี้สุดยอดมาก! อยากรู้ไหมว่ามีอะไรบ้าง?",
   ];
 
   const sendMessage = () => {
@@ -72,24 +72,24 @@ export function AIChat({ onBack }: AIChatProps) {
   };
 
   const quickReplies = [
-    "Recommend something",
-    "Tell me about Thai food",
-    "What's popular?",
-    "I'm feeling adventurous",
+    "แนะนำอะไรหน่อย",
+    "เล่าเรื่องอาหารไทยให้ฟังหน่อย",
+    "เมนูไหนเป็นที่นิยม?",
+    "ฉันรู้สึกอยากผจญภัย",
   ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50 flex flex-col">
       <div className="sticky top-0 z-10 bg-white/80 backdrop-blur-sm border-b p-4">
         <div className="max-w-md mx-auto flex items-center justify-between">
-          <Button variant="ghost" onClick={onBack}>← Back</Button>
+          <Button variant="ghost" onClick={onBack}>← กลับ</Button>
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full flex items-center justify-center">
               <Bot className="w-5 h-5 text-white" />
             </div>
             <div className="text-left">
-              <p>AI Companion</p>
-              <p className="text-xs text-muted-foreground">Always here for you</p>
+              <p>เพื่อน AI</p>
+              <p className="text-xs text-muted-foreground">อยู่เคียงข้างคุณเสมอ</p>
             </div>
           </div>
         </div>
@@ -175,7 +175,7 @@ export function AIChat({ onBack }: AIChatProps) {
       <div className="sticky bottom-0 bg-white border-t p-4">
         <div className="max-w-md mx-auto flex gap-2">
           <Input
-            placeholder="Type a message..."
+            placeholder="พิมพ์ข้อความ..."
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyPress={(e) => e.key === 'Enter' && sendMessage()}

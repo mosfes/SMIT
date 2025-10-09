@@ -11,7 +11,7 @@ interface SpinWheelProps {
 }
 
 export function SpinWheel({ onBack }: SpinWheelProps) {
-  const [names, setNames] = useState<string[]>(['Alex', 'Sam']);
+  const [names, setNames] = useState<string[]>(['อเล็กซ์', 'แซม']);
   const [newName, setNewName] = useState('');
   const [isSpinning, setIsSpinning] = useState(false);
   const [winner, setWinner] = useState<string | null>(null);
@@ -65,10 +65,10 @@ export function SpinWheel({ onBack }: SpinWheelProps) {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-cyan-50">
       <div className="sticky top-0 z-10 bg-white/80 backdrop-blur-sm border-b p-4">
         <div className="max-w-md mx-auto flex items-center justify-between">
-          <Button variant="ghost" onClick={onBack}>← Back</Button>
+          <Button variant="ghost" onClick={onBack}>← กลับ</Button>
           <div className="flex items-center gap-2">
             <CircleDollarSign className="w-5 h-5" />
-            <span>Who Pays?</span>
+            <span>ใครจ่าย?</span>
           </div>
         </div>
       </div>
@@ -76,9 +76,9 @@ export function SpinWheel({ onBack }: SpinWheelProps) {
       <div className="max-w-md mx-auto p-6 space-y-6">
         <div className="text-center space-y-2">
           <div className="text-4xl">🎡</div>
-          <h2>Random Payer</h2>
+          <h2>สุ่มคนจ่าย</h2>
           <p className="text-muted-foreground">
-            Add names and spin the wheel to find out who's paying!
+            เพิ่มชื่อแล้วหมุนวงล้อเพื่อหาว่าใครจะเป็นคนจ่าย!
           </p>
         </div>
 
@@ -136,9 +136,9 @@ export function SpinWheel({ onBack }: SpinWheelProps) {
               <Card className="p-6 bg-gradient-to-r from-yellow-100 to-orange-100 border-yellow-300 text-center">
                 <div className="space-y-2">
                   <div className="text-4xl">🎉</div>
-                  <h3>{winner} pays!</h3>
+                  <h3>{winner} จ่าย!</h3>
                   <p className="text-sm text-muted-foreground">
-                    Better luck next time! 😄
+                    ไว้โอกาสหน้านะ! 😄
                   </p>
                 </div>
               </Card>
@@ -148,11 +148,11 @@ export function SpinWheel({ onBack }: SpinWheelProps) {
 
         {/* Names List */}
         <Card className="p-4 bg-white space-y-4">
-          <h3>Participants ({names.length})</h3>
+          <h3>ผู้เข้าร่วม ({names.length})</h3>
           
           <div className="flex gap-2">
             <Input
-              placeholder="Enter name..."
+              placeholder="ใส่ชื่อ..."
               value={newName}
               onChange={(e) => setNewName(e.target.value)}
               onKeyPress={(e) => e.key === 'Enter' && addName()}
@@ -182,7 +182,7 @@ export function SpinWheel({ onBack }: SpinWheelProps) {
 
           {names.length < 2 && (
             <p className="text-sm text-muted-foreground">
-              Add at least 2 people to spin!
+              เพิ่มอย่างน้อย 2 คนเพื่อหมุน!
             </p>
           )}
         </Card>
@@ -194,7 +194,7 @@ export function SpinWheel({ onBack }: SpinWheelProps) {
           className="w-full py-6 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600"
         >
           <Play className={`w-5 h-5 mr-2 ${isSpinning ? 'animate-spin' : ''}`} />
-          {isSpinning ? 'Spinning...' : 'Spin the Wheel!'}
+          {isSpinning ? 'กำลังหมุน...' : 'หมุนวงล้อ!'}
         </Button>
       </div>
     </div>

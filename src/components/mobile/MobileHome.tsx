@@ -14,29 +14,29 @@ export function MobileHome({ onNavigate }: MobileHomeProps) {
     {
       id: 'random-menu',
       icon: Dices,
-      title: 'Random Menu',
-      description: 'Let us pick your meal',
+      title: 'สุ่มเมนู',
+      description: 'ให้เราเลือกอาหารให้คุณ',
       gradient: 'from-purple-500 to-pink-500',
     },
     {
       id: 'spin-wheel',
       icon: CircleDollarSign,
-      title: 'Who Pays?',
-      description: 'Spin to decide',
+      title: 'ใครจ่าย?',
+      description: 'หมุนวงล้อตัดสิน',
       gradient: 'from-blue-500 to-cyan-500',
     },
     {
       id: 'ai-chat',
       icon: Bot,
-      title: 'AI Companion',
-      description: 'Chat with your dining buddy',
+      title: 'เพื่อน AI',
+      description: 'คุยกับเพื่อนร่วมโต๊ะของคุณ',
       gradient: 'from-green-500 to-emerald-500',
     },
     {
       id: 'community',
       icon: Users,
-      title: 'Community',
-      description: 'Share food moments',
+      title: 'ชุมชน',
+      description: 'แบ่งปันช่วงเวลาแห่งอาหาร',
       gradient: 'from-orange-500 to-red-500',
     },
   ];
@@ -48,8 +48,8 @@ export function MobileHome({ onNavigate }: MobileHomeProps) {
         <div className="max-w-md mx-auto space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-white">🍜 Hiu Hiu Hiu</h1>
-              <p className="text-white/90 text-sm">Your Thai Food Adventure</p>
+              <h1 className="text-white">🍜 หิว หิว หิว</h1>
+              <p className="text-white/90 text-sm">การผจญภัยอาหารไทยของคุณ</p>
             </div>
             <Button
               variant="ghost"
@@ -70,7 +70,7 @@ export function MobileHome({ onNavigate }: MobileHomeProps) {
                   </div>
                   <div>
                     <p className="text-white">{user.name}</p>
-                    <p className="text-white/80 text-sm">Member since 2024</p>
+                    <p className="text-white/80 text-sm">สมาชิกตั้งแต่ปี 2024</p>
                   </div>
                 </div>
                 <Button
@@ -93,34 +93,34 @@ export function MobileHome({ onNavigate }: MobileHomeProps) {
         <Card className="p-6 bg-white shadow-lg">
           <div className="space-y-4">
             <div>
-              <h2>Restaurant Info</h2>
-              <p className="text-muted-foreground text-sm">Authentic Thai Cuisine</p>
+              <h2>ข้อมูลร้านอาหาร</h2>
+              <p className="text-muted-foreground text-sm">อาหารไทยต้นตำรับ</p>
             </div>
             <div className="grid grid-cols-2 gap-4 text-sm">
               <div className="flex items-start gap-2">
                 <Clock className="w-4 h-4 text-muted-foreground mt-0.5" />
                 <div>
-                  <p className="text-muted-foreground">Open Hours</p>
+                  <p className="text-muted-foreground">เวลาเปิด-ปิด</p>
                   <p>11:00 - 22:00</p>
                 </div>
               </div>
               <div className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-muted-foreground mt-0.5" />
                 <div>
-                  <p className="text-muted-foreground">Location</p>
-                  <p>Bangkok, Thailand</p>
+                  <p className="text-muted-foreground">ที่ตั้ง</p>
+                  <p>กรุงเทพ, ประเทศไทย</p>
                 </div>
               </div>
             </div>
             <div className="p-3 bg-yellow-50 rounded-lg border border-yellow-200">
-              <p className="text-sm">🎉 Special: Order via Cooking Game and earn extra coins!</p>
+              <p className="text-sm">🎉 พิเศษ: สั่งอาหารผ่านเกมทำอาหารและรับเหรียญพิเศษ!</p>
             </div>
           </div>
         </Card>
 
         {/* Features Grid */}
         <div>
-          <h3 className="mb-4">Fun Features</h3>
+          <h3 className="mb-4">ฟีเจอร์สนุกๆ</h3>
           <div className="grid grid-cols-2 gap-4">
             {features.map(feature => {
               const Icon = feature.icon;
@@ -148,21 +148,21 @@ export function MobileHome({ onNavigate }: MobileHomeProps) {
         {/* Quick Stats */}
         {user && (
           <Card className="p-6 bg-white">
-            <h3 className="mb-4">Your Stats</h3>
+            <h3 className="mb-4">สถิติของคุณ</h3>
             <div className="grid grid-cols-3 gap-4 text-center">
               <div>
                 <p className="text-2xl">💰</p>
-                <p className="text-muted-foreground text-sm">Coins</p>
+                <p className="text-muted-foreground text-sm">เหรียญ</p>
                 <p>{user.coins}</p>
               </div>
               <div>
                 <p className="text-2xl">🍽️</p>
-                <p className="text-muted-foreground text-sm">Orders</p>
+                <p className="text-muted-foreground text-sm">ออเดอร์</p>
                 <p>{user.totalOrders}</p>
               </div>
               <div>
                 <p className="text-2xl">❤️</p>
-                <p className="text-muted-foreground text-sm">Favorites</p>
+                <p className="text-muted-foreground text-sm">รายการโปรด</p>
                 <p>{user.favoriteItems.length}</p>
               </div>
             </div>

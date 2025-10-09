@@ -19,20 +19,20 @@ export function UserProfile({ onBack }: UserProfileProps) {
   const favoriteItems = menuItems.filter(item => user.favoriteItems.includes(item.id));
 
   const achievements = [
-    { id: '1', icon: '🎮', name: 'Game Master', description: 'Played 10 cooking games', unlocked: true },
-    { id: '2', icon: '⭐', name: 'Reviewer', description: 'Left 5 reviews', unlocked: true },
-    { id: '3', icon: '🔥', name: 'Spice King', description: 'Ordered 5 spicy dishes', unlocked: true },
-    { id: '4', icon: '💰', name: 'Coin Collector', description: 'Earned 500 coins', unlocked: false },
-    { id: '5', icon: '👑', name: 'VIP Member', description: 'Member for 1 year', unlocked: false },
-    { id: '6', icon: '🎯', name: 'Foodie', description: 'Tried all menu items', unlocked: false },
+    { id: '1', icon: '🎮', name: 'เซียนเกม', description: 'เล่นเกมทำอาหาร 10 ครั้ง', unlocked: true },
+    { id: '2', icon: '⭐', name: 'นักรีวิว', description: 'เขียนรีวิว 5 ครั้ง', unlocked: true },
+    { id: '3', icon: '🔥', name: 'ราชาแห่งความเผ็ด', description: 'สั่งอาหารเผ็ด 5 ครั้ง', unlocked: true },
+    { id: '4', icon: '💰', name: 'นักสะสมเหรียญ', description: 'ได้รับ 500 เหรียญ', unlocked: false },
+    { id: '5', icon: '👑', name: 'สมาชิกระดับ VIP', description: 'เป็นสมาชิกครบ 1 ปี', unlocked: false },
+    { id: '6', icon: '🎯', name: 'นักชิม', description: 'ลองเมนูครบทุกอย่าง', unlocked: false },
   ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50">
       <div className="sticky top-0 z-10 bg-white/80 backdrop-blur-sm border-b p-4">
         <div className="max-w-md mx-auto flex items-center justify-between">
-          <Button variant="ghost" onClick={onBack}>← Back</Button>
-          <span>Profile</span>
+          <Button variant="ghost" onClick={onBack}>← กลับ</Button>
+          <span>โปรไฟล์</span>
           <Button variant="ghost" size="icon">
             <Settings className="w-5 h-5" />
           </Button>
@@ -48,22 +48,22 @@ export function UserProfile({ onBack }: UserProfileProps) {
             </div>
             <div>
               <h2 className="text-white">{user.name}</h2>
-              <p className="text-white/80 text-sm">Gold Member</p>
+              <p className="text-white/80 text-sm">สมาชิกระดับโกลด์</p>
             </div>
             <div className="flex justify-center gap-4 text-sm">
               <div className="text-center">
                 <p className="text-2xl text-white">{user.totalOrders}</p>
-                <p className="text-white/80 text-xs">Orders</p>
+                <p className="text-white/80 text-xs">ออเดอร์</p>
               </div>
               <div className="w-px bg-white/20"></div>
               <div className="text-center">
                 <p className="text-2xl text-white">{user.coins}</p>
-                <p className="text-white/80 text-xs">Coins</p>
+                <p className="text-white/80 text-xs">เหรียญ</p>
               </div>
               <div className="w-px bg-white/20"></div>
               <div className="text-center">
                 <p className="text-2xl text-white">{favoriteItems.length}</p>
-                <p className="text-white/80 text-xs">Favorites</p>
+                <p className="text-white/80 text-xs">รายการโปรด</p>
               </div>
             </div>
           </div>
@@ -76,11 +76,11 @@ export function UserProfile({ onBack }: UserProfileProps) {
               <Calendar className="w-5 h-5 text-purple-600" />
             </div>
             <div className="flex-1">
-              <p className="text-sm text-muted-foreground">Member Since</p>
-              <p>{user.memberSince.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}</p>
+              <p className="text-sm text-muted-foreground">สมาชิกตั้งแต่</p>
+              <p>{user.memberSince.toLocaleDateString('th-TH', { month: 'long', year: 'numeric' })}</p>
             </div>
             <Badge variant="secondary">
-              {Math.floor((Date.now() - user.memberSince.getTime()) / (1000 * 60 * 60 * 24))} days
+              {Math.floor((Date.now() - user.memberSince.getTime()) / (1000 * 60 * 60 * 24))} วัน
             </Badge>
           </div>
         </Card>
@@ -88,7 +88,7 @@ export function UserProfile({ onBack }: UserProfileProps) {
         {/* Favorite Items */}
         <Card className="p-4 bg-white">
           <div className="flex items-center justify-between mb-4">
-            <h3>Favorite Dishes</h3>
+            <h3>อาหารจานโปรด</h3>
             <Heart className="w-5 h-5 text-red-500" />
           </div>
           <div className="grid grid-cols-2 gap-3">
@@ -113,7 +113,7 @@ export function UserProfile({ onBack }: UserProfileProps) {
         {/* Achievements */}
         <Card className="p-4 bg-white">
           <div className="flex items-center justify-between mb-4">
-            <h3>Achievements</h3>
+            <h3>ความสำเร็จ</h3>
             <Trophy className="w-5 h-5 text-yellow-500" />
           </div>
           <div className="grid grid-cols-3 gap-3">
@@ -133,14 +133,14 @@ export function UserProfile({ onBack }: UserProfileProps) {
           </div>
           <div className="mt-4 p-3 bg-purple-50 rounded-lg text-center">
             <p className="text-sm">
-              🎯 {achievements.filter(a => a.unlocked).length}/{achievements.length} Unlocked
+              🎯 {achievements.filter(a => a.unlocked).length}/{achievements.length} ปลดล็อคแล้ว
             </p>
           </div>
         </Card>
 
         {/* Activity Stats */}
         <Card className="p-4 bg-white">
-          <h3 className="mb-4">Activity</h3>
+          <h3 className="mb-4">กิจกรรม</h3>
           <div className="space-y-3">
             <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
               <div className="flex items-center gap-3">
@@ -148,11 +148,11 @@ export function UserProfile({ onBack }: UserProfileProps) {
                   <TrendingUp className="w-4 h-4 text-white" />
                 </div>
                 <div>
-                  <p className="text-sm">This Month</p>
-                  <p className="text-xs text-muted-foreground">5 orders</p>
+                  <p className="text-sm">เดือนนี้</p>
+                  <p className="text-xs text-muted-foreground">5 ออเดอร์</p>
                 </div>
               </div>
-              <span className="text-blue-600">+75 coins</span>
+              <span className="text-blue-600">+75 เหรียญ</span>
             </div>
             <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg">
               <div className="flex items-center gap-3">
@@ -160,8 +160,8 @@ export function UserProfile({ onBack }: UserProfileProps) {
                   <Award className="w-4 h-4 text-white" />
                 </div>
                 <div>
-                  <p className="text-sm">Reviews Given</p>
-                  <p className="text-xs text-muted-foreground">Total reviews</p>
+                  <p className="text-sm">รีวิวที่ให้</p>
+                  <p className="text-xs text-muted-foreground">รีวิวทั้งหมด</p>
                 </div>
               </div>
               <span className="text-green-600">8</span>
@@ -172,8 +172,8 @@ export function UserProfile({ onBack }: UserProfileProps) {
                   <Heart className="w-4 h-4 text-white" />
                 </div>
                 <div>
-                  <p className="text-sm">Community Posts</p>
-                  <p className="text-xs text-muted-foreground">Your posts</p>
+                  <p className="text-sm">โพสต์ในชุมชน</p>
+                  <p className="text-xs text-muted-foreground">โพสต์ของคุณ</p>
                 </div>
               </div>
               <span className="text-purple-600">12</span>
@@ -183,7 +183,7 @@ export function UserProfile({ onBack }: UserProfileProps) {
 
         {/* Edit Profile Button */}
         <Button className="w-full" variant="outline">
-          Edit Profile
+          แก้ไขโปรไฟล์
         </Button>
       </div>
     </div>

@@ -50,10 +50,10 @@ export function RandomMenu({ menuItems, onBack }: RandomMenuProps) {
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50">
       <div className="sticky top-0 z-10 bg-white/80 backdrop-blur-sm border-b p-4">
         <div className="max-w-md mx-auto flex items-center justify-between">
-          <Button variant="ghost" onClick={onBack}>← Back</Button>
+          <Button variant="ghost" onClick={onBack}>← กลับ</Button>
           <div className="flex items-center gap-2">
             <Dices className="w-5 h-5" />
-            <span>Random Menu</span>
+            <span>สุ่มเมนู</span>
           </div>
         </div>
       </div>
@@ -61,18 +61,18 @@ export function RandomMenu({ menuItems, onBack }: RandomMenuProps) {
       <div className="max-w-md mx-auto p-6 space-y-6">
         <div className="text-center space-y-2">
           <div className="text-4xl">🎲</div>
-          <h2>Can't Decide?</h2>
+          <h2>ตัดสินใจไม่ได้?</h2>
           <p className="text-muted-foreground">
-            Let us pick a dish for you based on what everyone's ordering!
+            ให้เราเลือกอาหารให้คุณจากเมนูที่ทุกคนสั่ง!
           </p>
         </div>
 
         {/* Filters */}
         <Card className="p-4 bg-white space-y-4">
-          <h3>Your Preferences</h3>
+          <h3>ความชอบของคุณ</h3>
           
           <div>
-            <label className="text-sm text-muted-foreground">Max Price: ฿{filters.maxPrice}</label>
+            <label className="text-sm text-muted-foreground">ราคาสูงสุด: ฿{filters.maxPrice}</label>
             <input
               type="range"
               min="50"
@@ -86,7 +86,7 @@ export function RandomMenu({ menuItems, onBack }: RandomMenuProps) {
 
           <div>
             <label className="text-sm text-muted-foreground">
-              Spicy Level: {filters.maxSpicy === 0 ? 'None' : '🌶️'.repeat(filters.maxSpicy)}
+              ระดับความเผ็ด: {filters.maxSpicy === 0 ? 'ไม่เผ็ด' : '🌶️'.repeat(filters.maxSpicy)}
             </label>
             <input
               type="range"
@@ -100,7 +100,7 @@ export function RandomMenu({ menuItems, onBack }: RandomMenuProps) {
           </div>
 
           <div>
-            <label className="text-sm text-muted-foreground block mb-2">Category</label>
+            <label className="text-sm text-muted-foreground block mb-2">หมวดหมู่</label>
             <div className="flex flex-wrap gap-2">
               {['all', 'main', 'appetizer', 'dessert', 'drink'].map(cat => (
                 <Badge
@@ -109,7 +109,7 @@ export function RandomMenu({ menuItems, onBack }: RandomMenuProps) {
                   className="cursor-pointer"
                   onClick={() => setFilters({ ...filters, category: cat })}
                 >
-                  {cat}
+                  {cat === 'all' ? 'ทั้งหมด' : cat === 'main' ? 'อาหารจานหลัก' : cat === 'appetizer' ? 'อาหารเรียกน้ำย่อย' : cat === 'dessert' ? 'ของหวาน' : 'เครื่องดื่ม'}
                 </Badge>
               ))}
             </div>
@@ -139,12 +139,12 @@ export function RandomMenu({ menuItems, onBack }: RandomMenuProps) {
               </div>
               <div className="flex items-center justify-between">
                 <span>฿{currentItem.price}</span>
-                <Badge>{currentItem.category}</Badge>
+                <Badge>{currentItem.category === 'main' ? 'อาหารจานหลัก' : currentItem.category === 'appetizer' ? 'อาหารเรียกน้ำย่อย' : currentItem.category === 'dessert' ? 'ของหวาน' : 'เครื่องดื่ม'}</Badge>
               </div>
               {!isRolling && (
                 <div className="p-3 bg-green-50 rounded-lg text-center">
                   <p className="text-sm text-green-700">
-                    ✨ Popular choice among diners today!
+                    ✨ ตัวเลือกยอดนิยมในหมู่นักทานวันนี้!
                   </p>
                 </div>
               )}
@@ -159,12 +159,12 @@ export function RandomMenu({ menuItems, onBack }: RandomMenuProps) {
           className="w-full py-6 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600"
         >
           <Dices className={`w-5 h-5 mr-2 ${isRolling ? 'animate-spin' : ''}`} />
-          {isRolling ? 'Rolling...' : currentItem ? 'Roll Again' : 'Roll the Dice!'}
+          {isRolling ? 'กำลังสุ่ม...' : currentItem ? 'สุ่มอีกครั้ง' : 'ทอยลูกเต๋า!'}
         </Button>
 
         {currentItem && !isRolling && (
           <div className="text-center text-sm text-muted-foreground">
-            <p>Not satisfied? Use 5 coins to reroll!</p>
+            <p>ไม่พอใจ? ใช้ 5 เหรียญเพื่อสุ่มใหม่!</p>
           </div>
         )}
       </div>

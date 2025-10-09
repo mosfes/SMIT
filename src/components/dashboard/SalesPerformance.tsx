@@ -16,18 +16,18 @@ export function SalesPerformance() {
 
   // Top selling items (mock data)
   const topItems = [
-    { name: 'Pad Thai', sales: 234, revenue: 28080 },
-    { name: 'Green Curry', sales: 189, revenue: 24570 },
-    { name: 'Tom Yum Soup', sales: 156, revenue: 17160 },
-    { name: 'Fried Rice', sales: 198, revenue: 17820 },
+    { name: 'ผัดไทย', sales: 234, revenue: 28080 },
+    { name: 'แกงเขียวหวาน', sales: 189, revenue: 24570 },
+    { name: 'ต้มยำกุ้ง', sales: 156, revenue: 17160 },
+    { name: 'ข้าวผัด', sales: 198, revenue: 17820 },
   ];
 
   // Category distribution
   const categoryData = [
-    { name: 'Mains', value: 65, color: '#f97316' },
-    { name: 'Appetizers', value: 20, color: '#3b82f6' },
-    { name: 'Desserts', value: 10, color: '#8b5cf6' },
-    { name: 'Drinks', value: 5, color: '#10b981' },
+    { name: 'อาหารจานหลัก', value: 65, color: '#f97316' },
+    { name: 'อาหารเรียกน้ำย่อย', value: 20, color: '#3b82f6' },
+    { name: 'ของหวาน', value: 10, color: '#8b5cf6' },
+    { name: 'เครื่องดื่ม', value: 5, color: '#10b981' },
   ];
 
   // Recent sales data
@@ -38,8 +38,8 @@ export function SalesPerformance() {
       {/* Header */}
       <div className="bg-white border-b p-6 sticky top-0 z-10">
         <div className="max-w-7xl mx-auto">
-          <h1>Sales Performance</h1>
-          <p className="text-muted-foreground">Track your business metrics and trends</p>
+          <h1>ยอดขาย</h1>
+          <p className="text-muted-foreground">ติดตามตัวชี้วัดและแนวโน้มธุรกิจของคุณ</p>
         </div>
       </div>
 
@@ -48,9 +48,9 @@ export function SalesPerformance() {
           {/* Period Selector */}
           <Tabs value={period} onValueChange={(v) => setPeriod(v as any)}>
             <TabsList>
-              <TabsTrigger value="week">This Week</TabsTrigger>
-              <TabsTrigger value="month">This Month</TabsTrigger>
-              <TabsTrigger value="year">This Year</TabsTrigger>
+              <TabsTrigger value="week">สัปดาห์นี้</TabsTrigger>
+              <TabsTrigger value="month">เดือนนี้</TabsTrigger>
+              <TabsTrigger value="year">ปีนี้</TabsTrigger>
             </TabsList>
           </Tabs>
 
@@ -59,7 +59,7 @@ export function SalesPerformance() {
             <Card className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-muted-foreground">Total Revenue</p>
+                  <p className="text-sm text-muted-foreground">รายได้รวม</p>
                   <h2 className="text-3xl">฿{totalRevenue.toLocaleString()}</h2>
                   <div className="flex items-center gap-1 text-sm text-green-600 mt-2">
                     <TrendingUp className="w-4 h-4" />
@@ -75,7 +75,7 @@ export function SalesPerformance() {
             <Card className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-muted-foreground">Total Orders</p>
+                  <p className="text-sm text-muted-foreground">ออเดอร์ทั้งหมด</p>
                   <h2 className="text-3xl">{totalOrders}</h2>
                   <div className="flex items-center gap-1 text-sm text-blue-600 mt-2">
                     <TrendingUp className="w-4 h-4" />
@@ -91,7 +91,7 @@ export function SalesPerformance() {
             <Card className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-muted-foreground">Avg Order Value</p>
+                  <p className="text-sm text-muted-foreground">มูลค่าเฉลี่ยต่อออเดอร์</p>
                   <h2 className="text-3xl">฿{Math.round(avgOrderValue)}</h2>
                   <div className="flex items-center gap-1 text-sm text-purple-600 mt-2">
                     <TrendingUp className="w-4 h-4" />
@@ -107,7 +107,7 @@ export function SalesPerformance() {
             <Card className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-muted-foreground">Total Customers</p>
+                  <p className="text-sm text-muted-foreground">ลูกค้าทั้งหมด</p>
                   <h2 className="text-3xl">1,234</h2>
                   <div className="flex items-center gap-1 text-sm text-orange-600 mt-2">
                     <TrendingUp className="w-4 h-4" />
@@ -125,7 +125,7 @@ export function SalesPerformance() {
           <div className="grid gap-6 lg:grid-cols-2">
             {/* Revenue Chart */}
             <Card className="p-6">
-              <h3 className="mb-4">Revenue Trend</h3>
+              <h3 className="mb-4">แนวโน้มรายได้</h3>
               <ResponsiveContainer width="100%" height={300}>
                 <LineChart data={recentData}>
                   <CartesianGrid strokeDasharray="3 3" />
@@ -140,7 +140,7 @@ export function SalesPerformance() {
 
             {/* Orders Chart */}
             <Card className="p-6">
-              <h3 className="mb-4">Daily Orders</h3>
+              <h3 className="mb-4">ออเดอร์รายวัน</h3>
               <ResponsiveContainer width="100%" height={300}>
                 <BarChart data={recentData}>
                   <CartesianGrid strokeDasharray="3 3" />
@@ -157,7 +157,7 @@ export function SalesPerformance() {
           <div className="grid gap-6 lg:grid-cols-2">
             {/* Top Selling Items */}
             <Card className="p-6">
-              <h3 className="mb-4">Top Selling Items</h3>
+              <h3 className="mb-4">สินค้าขายดี</h3>
               <div className="space-y-4">
                 {topItems.map((item, index) => (
                   <div key={index} className="flex items-center justify-between">
@@ -167,7 +167,7 @@ export function SalesPerformance() {
                       </div>
                       <div>
                         <p>{item.name}</p>
-                        <p className="text-sm text-muted-foreground">{item.sales} orders</p>
+                        <p className="text-sm text-muted-foreground">{item.sales} ออเดอร์</p>
                       </div>
                     </div>
                     <span>฿{item.revenue.toLocaleString()}</span>
@@ -178,7 +178,7 @@ export function SalesPerformance() {
 
             {/* Category Distribution */}
             <Card className="p-6">
-              <h3 className="mb-4">Sales by Category</h3>
+              <h3 className="mb-4">ยอดขายตามหมวดหมู่</h3>
               <div className="flex items-center justify-between">
                 <ResponsiveContainer width="60%" height={200}>
                   <PieChart>
@@ -213,7 +213,7 @@ export function SalesPerformance() {
 
           {/* Peak Hours */}
           <Card className="p-6">
-            <h3 className="mb-4">Peak Hours</h3>
+            <h3 className="mb-4">ชั่วโมงเร่งด่วน</h3>
             <div className="grid grid-cols-12 gap-2">
               {Array.from({ length: 12 }, (_, i) => {
                 const hour = i + 11; // 11 AM to 10 PM

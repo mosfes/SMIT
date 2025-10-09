@@ -50,8 +50,8 @@ export function CommunityFeed({ onBack }: CommunityFeedProps) {
     <div className="min-h-screen bg-gradient-to-br from-orange-50 to-red-50">
       <div className="sticky top-0 z-10 bg-white/80 backdrop-blur-sm border-b p-4">
         <div className="max-w-2xl mx-auto flex items-center justify-between">
-          <Button variant="ghost" onClick={onBack}>← Back</Button>
-          <h2>Community</h2>
+          <Button variant="ghost" onClick={onBack}>← กลับ</Button>
+          <h2>ชุมชน</h2>
           <Button size="icon" onClick={() => setShowNewPost(true)}>
             <Plus className="w-5 h-5" />
           </Button>
@@ -63,10 +63,10 @@ export function CommunityFeed({ onBack }: CommunityFeedProps) {
         <Card className="p-2 bg-white">
           <Tabs value={filter} onValueChange={setFilter}>
             <TabsList className="w-full grid grid-cols-5">
-              <TabsTrigger value="all">All</TabsTrigger>
-              <TabsTrigger value="main">Mains</TabsTrigger>
-              <TabsTrigger value="appetizer">Apps</TabsTrigger>
-              <TabsTrigger value="dessert">Desserts</TabsTrigger>
+              <TabsTrigger value="all">ทั้งหมด</TabsTrigger>
+              <TabsTrigger value="main">อาหารจานหลัก</TabsTrigger>
+              <TabsTrigger value="appetizer">อาหารเรียกน้ำย่อย</TabsTrigger>
+              <TabsTrigger value="dessert">ของหวาน</TabsTrigger>
               <TabsTrigger value="popular">
                 <TrendingUp className="w-4 h-4" />
               </TabsTrigger>
@@ -135,7 +135,7 @@ export function CommunityFeed({ onBack }: CommunityFeedProps) {
                   onClick={() => setSelectedPost(post.id)}
                   className="text-sm text-muted-foreground hover:text-foreground"
                 >
-                  View all {post.comments.length} comments
+                  ดูความคิดเห็นทั้งหมด {post.comments.length} รายการ
                 </button>
               )}
             </div>
@@ -147,7 +147,7 @@ export function CommunityFeed({ onBack }: CommunityFeedProps) {
       <Dialog open={!!selectedPost} onOpenChange={() => setSelectedPost(null)}>
         <DialogContent className="max-w-2xl max-h-[80vh] flex flex-col">
           <DialogHeader>
-            <DialogTitle>Comments</DialogTitle>
+            <DialogTitle>ความคิดเห็น</DialogTitle>
           </DialogHeader>
           
           {currentPost && (
@@ -186,13 +186,13 @@ export function CommunityFeed({ onBack }: CommunityFeedProps) {
           {/* Add Comment */}
           <div className="flex gap-2 pt-4 border-t">
             <Input
-              placeholder="Add a comment..."
+              placeholder="เพิ่มความคิดเห็น..."
               value={commentText}
               onChange={(e) => setCommentText(e.target.value)}
               onKeyPress={(e) => e.key === 'Enter' && selectedPost && handleAddComment(selectedPost)}
             />
             <Button onClick={() => selectedPost && handleAddComment(selectedPost)}>
-              Post
+              โพสต์
             </Button>
           </div>
         </DialogContent>
@@ -202,23 +202,23 @@ export function CommunityFeed({ onBack }: CommunityFeedProps) {
       <Dialog open={showNewPost} onOpenChange={setShowNewPost}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Create New Post</DialogTitle>
+            <DialogTitle>สร้างโพสต์ใหม่</DialogTitle>
             <DialogDescription>
-              Share your food experience with the community!
+              แบ่งปันประสบการณ์อาหารของคุณกับชุมชน!
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-4">
             <div className="aspect-square bg-gray-100 rounded-lg flex items-center justify-center">
-              <p className="text-muted-foreground">Upload Photo</p>
+              <p className="text-muted-foreground">อัปโหลดรูปภาพ</p>
             </div>
-            <Textarea placeholder="Write a caption..." rows={3} />
+            <Textarea placeholder="เขียนคำบรรยาย..." rows={3} />
           </div>
           <DialogFooter>
             <Button variant="outline" onClick={() => setShowNewPost(false)}>
-              Cancel
+              ยกเลิก
             </Button>
             <Button onClick={() => setShowNewPost(false)}>
-              Post
+              โพสต์
             </Button>
           </DialogFooter>
         </DialogContent>

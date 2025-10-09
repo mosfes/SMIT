@@ -33,8 +33,8 @@ export function ReviewFeedback() {
       {/* Header */}
       <div className="bg-white border-b p-6 sticky top-0 z-10">
         <div className="max-w-7xl mx-auto">
-          <h1>Reviews & Feedback</h1>
-          <p className="text-muted-foreground">Customer reviews and ratings</p>
+          <h1>รีวิวและข้อเสนอแนะ</h1>
+          <p className="text-muted-foreground">รีวิวและคะแนนจากลูกค้า</p>
         </div>
       </div>
 
@@ -45,7 +45,7 @@ export function ReviewFeedback() {
             <Card className="p-6 bg-gradient-to-br from-yellow-50 to-orange-50">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-muted-foreground">Average Rating</p>
+                  <p className="text-sm text-muted-foreground">คะแนนเฉลี่ย</p>
                   <div className="flex items-center gap-2 mt-2">
                     <h2 className="text-3xl">{avgRating}</h2>
                     <div className="flex">
@@ -71,7 +71,7 @@ export function ReviewFeedback() {
             <Card className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-muted-foreground">Total Reviews</p>
+                  <p className="text-sm text-muted-foreground">รีวิวทั้งหมด</p>
                   <h2 className="text-3xl">{totalReviews}</h2>
                   <div className="flex items-center gap-1 text-sm text-green-600 mt-2">
                     <TrendingUp className="w-4 h-4" />
@@ -87,9 +87,9 @@ export function ReviewFeedback() {
             <Card className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-muted-foreground">Response Rate</p>
+                  <p className="text-sm text-muted-foreground">อัตราการตอบกลับ</p>
                   <h2 className="text-3xl">87%</h2>
-                  <p className="text-sm text-muted-foreground mt-2">Within 24h</p>
+                  <p className="text-sm text-muted-foreground mt-2">ภายใน 24 ชม.</p>
                 </div>
                 <div className="p-3 bg-green-100 rounded-lg">
                   <ThumbsUp className="w-6 h-6 text-green-600" />
@@ -100,9 +100,9 @@ export function ReviewFeedback() {
             <Card className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-muted-foreground">Positive</p>
+                  <p className="text-sm text-muted-foreground">เชิงบวก</p>
                   <h2 className="text-3xl">94%</h2>
-                  <p className="text-sm text-muted-foreground mt-2">4-5 stars</p>
+                  <p className="text-sm text-muted-foreground mt-2">4-5 ดาว</p>
                 </div>
                 <div className="p-3 bg-purple-100 rounded-lg">
                   <TrendingUp className="w-6 h-6 text-purple-600" />
@@ -113,7 +113,7 @@ export function ReviewFeedback() {
 
           {/* Rating Distribution */}
           <Card className="p-6">
-            <h3 className="mb-4">Rating Distribution</h3>
+            <h3 className="mb-4">การกระจายคะแนน</h3>
             <div className="space-y-3">
               {ratingDistribution.map(({ rating, count, percentage }) => (
                 <div key={rating} className="flex items-center gap-4">
@@ -142,7 +142,7 @@ export function ReviewFeedback() {
                 <div className="relative">
                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                   <Input
-                    placeholder="Search reviews..."
+                    placeholder="ค้นหารีวิว..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="pl-10"
@@ -151,7 +151,7 @@ export function ReviewFeedback() {
               </div>
               <Tabs value={filterRating.toString()} onValueChange={(v) => setFilterRating(v === 'all' ? 'all' : parseInt(v))}>
                 <TabsList>
-                  <TabsTrigger value="all">All</TabsTrigger>
+                  <TabsTrigger value="all">ทั้งหมด</TabsTrigger>
                   <TabsTrigger value="5">5⭐</TabsTrigger>
                   <TabsTrigger value="4">4⭐</TabsTrigger>
                   <TabsTrigger value="3">3⭐</TabsTrigger>
@@ -194,7 +194,7 @@ export function ReviewFeedback() {
                         </div>
                       </div>
                     </div>
-                    <Badge variant="outline">Order #{review.orderId.slice(-4)}</Badge>
+                    <Badge variant="outline">ออเดอร์ #{review.orderId.slice(-4)}</Badge>
                   </div>
 
                   {/* Review Content */}
@@ -215,11 +215,11 @@ export function ReviewFeedback() {
                   <div className="flex gap-2 pt-2 border-t">
                     <Button variant="outline" size="sm">
                       <ThumbsUp className="w-4 h-4 mr-1" />
-                      Helpful
+                      มีประโยชน์
                     </Button>
                     <Button variant="outline" size="sm">
                       <MessageSquare className="w-4 h-4 mr-1" />
-                      Reply
+                      ตอบกลับ
                     </Button>
                   </div>
                 </div>
@@ -230,8 +230,8 @@ export function ReviewFeedback() {
           {filteredReviews.length === 0 && (
             <Card className="p-12 text-center">
               <div className="text-6xl mb-4">💭</div>
-              <h3>No reviews found</h3>
-              <p className="text-muted-foreground">Try adjusting your filters</p>
+              <h3>ไม่พบรีวิว</h3>
+              <p className="text-muted-foreground">ลองปรับเปลี่ยนตัวกรองของคุณ</p>
             </Card>
           )}
         </div>

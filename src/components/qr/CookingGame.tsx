@@ -46,7 +46,7 @@ export function CookingGame({ onOrderComplete, onBack }: CookingGameProps) {
     const proteins = selectedIngredients.filter(i => i.category === 'protein');
     const veggies = selectedIngredients.filter(i => i.category === 'vegetable');
     
-    const styles = ['Stir-fried', 'Spicy', 'Sweet', 'Crispy', 'Thai'];
+    const styles = ['ผัด', 'เผ็ด', 'หวาน', 'กรอบ', 'ไทย'];
     const style = styles[Math.floor(Math.random() * styles.length)];
     
     let name = style;
@@ -54,10 +54,10 @@ export function CookingGame({ onOrderComplete, onBack }: CookingGameProps) {
       name += ` ${proteins[0].name}`;
     }
     if (veggies.length > 0) {
-      name += ` with ${veggies[0].name}`;
+      name += ` กับ ${veggies[0].name}`;
     }
     
-    setDishName(name || 'Mystery Dish');
+    setDishName(name || 'เมนูลึกลับ');
   };
 
   if (gameStage === 'select') {
@@ -87,7 +87,7 @@ export function CookingGame({ onOrderComplete, onBack }: CookingGameProps) {
           <div className="space-y-4">
             {['protein', 'vegetable', 'sauce', 'spice'].map(category => (
               <div key={category}>
-                <h3 className="mb-3 capitalize">{category}s</h3>
+                <h3 className="mb-3 capitalize">{category === 'protein' ? 'โปรตีน' : category === 'vegetable' ? 'ผัก' : category === 'sauce' ? 'ซอส' : 'เครื่องเทศ'}</h3>
                 <div className="grid grid-cols-2 gap-3">
                   {ingredients
                     .filter(i => i.category === category)
@@ -172,7 +172,7 @@ export function CookingGame({ onOrderComplete, onBack }: CookingGameProps) {
             </div>
           </Card>
           <p className="text-muted-foreground">
-            🎉 โบนัส: +10 Hiu Hiu Hiu coins สำหรับการเล่น!
+            🎉 โบนัส: +10 เหรียญ หิว หิว หิว สำหรับการเล่น!
           </p>
         </div>
 

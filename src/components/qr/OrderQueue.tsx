@@ -75,10 +75,10 @@ export function OrderQueue({ order: initialOrder, onComplete }: OrderQueueProps)
 
   const getStatusText = () => {
     switch (status) {
-      case 'pending': return 'Waiting in Queue';
-      case 'cooking': return 'Cooking Now! 🍳';
-      case 'ready': return 'Ready for Pickup! 🛎️';
-      default: return 'Processing';
+      case 'pending': return 'กำลังรอคิว';
+      case 'cooking': return 'กำลังทำ! 🍳';
+      case 'ready': return 'พร้อมเสิร์ฟแล้ว! 🛎️';
+      default: return 'กำลังดำเนินการ';
     }
   };
 
@@ -89,20 +89,20 @@ export function OrderQueue({ order: initialOrder, onComplete }: OrderQueueProps)
           <div className={`inline-flex items-center justify-center w-32 h-32 rounded-full ${getStatusColor()} text-white mb-4 animate-pulse`}>
             <div className="text-center">
               <div className="text-4xl">#{order.queueNumber}</div>
-              <div className="text-sm">Queue</div>
+              <div className="text-sm">คิว</div>
             </div>
           </div>
           <h2>{getStatusText()}</h2>
           <p className="text-muted-foreground">
-            Estimated time: ~{estimatedTime} minutes
+            เวลาโดยประมาณ: ~{estimatedTime} นาที
           </p>
         </div>
 
         <Card className="p-6 bg-white space-y-4">
           <div className="flex items-center justify-between pb-4 border-b">
-            <span className="text-muted-foreground">Order #{order.id.slice(-4)}</span>
+            <span className="text-muted-foreground">ออเดอร์ #{order.id.slice(-4)}</span>
             <Badge variant="secondary">
-              {order.orderType === 'game' ? '🎮 Game' : '😴 Lazy Cook'}
+              {order.orderType === 'game' ? '🎮 เกม' : '😴 Lazy Cook'}
             </Badge>
           </div>
 
@@ -116,7 +116,7 @@ export function OrderQueue({ order: initialOrder, onComplete }: OrderQueueProps)
           </div>
 
           <div className="pt-4 border-t flex justify-between">
-            <span>Total</span>
+            <span>รวม</span>
             <span>฿{order.totalPrice}</span>
           </div>
         </Card>
@@ -126,19 +126,19 @@ export function OrderQueue({ order: initialOrder, onComplete }: OrderQueueProps)
             <div className="flex items-start gap-3">
               <Coins className="w-6 h-6 text-yellow-600 flex-shrink-0 mt-1" />
               <div className="flex-1 space-y-2">
-                <h3>Skip the Queue!</h3>
+                <h3>แซงคิว!</h3>
                 <p className="text-sm text-muted-foreground">
-                  Use 50 Hiu Hiu Hiu coins to move your order to the front of the line
+                  ใช้ 50 เหรียญ หิว หิว หิว เพื่อเลื่อนออเดอร์ของคุณไปอยู่หน้าสุดของคิว
                 </p>
                 <div className="flex items-center justify-between">
-                  <span className="text-sm">Your balance: {user.coins} coins</span>
+                  <span className="text-sm">ยอดคงเหลือของคุณ: {user.coins} เหรียญ</span>
                   <Button
                     onClick={() => setShowSkipDialog(true)}
                     disabled={user.coins < 50}
                     size="sm"
                     className="bg-yellow-500 hover:bg-yellow-600"
                   >
-                    Skip Queue
+                    แซงคิว
                   </Button>
                 </div>
               </div>
@@ -149,20 +149,20 @@ export function OrderQueue({ order: initialOrder, onComplete }: OrderQueueProps)
         <div className="grid grid-cols-2 gap-3 text-center text-sm">
           <Card className="p-4">
             <Users className="w-5 h-5 mx-auto mb-1 text-muted-foreground" />
-            <p className="text-muted-foreground">Ahead of you</p>
+            <p className="text-muted-foreground">คิวก่อนหน้า</p>
             <p>{Math.max(0, 3 - (status === 'cooking' ? 3 : 0))}</p>
           </Card>
           <Card className="p-4">
             <Clock className="w-5 h-5 mx-auto mb-1 text-muted-foreground" />
-            <p className="text-muted-foreground">Wait time</p>
-            <p>~{estimatedTime}m</p>
+            <p className="text-muted-foreground">เวลารอ</p>
+            <p>~{estimatedTime} นาที</p>
           </Card>
         </div>
 
         {status === 'ready' && (
           <Button onClick={() => setShowReviewDialog(true)} className="w-full" size="lg">
             <MessageSquare className="w-5 h-5 mr-2" />
-            Leave a Review
+            เขียนรีวิว
           </Button>
         )}
       </div>
@@ -171,27 +171,27 @@ export function OrderQueue({ order: initialOrder, onComplete }: OrderQueueProps)
       <Dialog open={showSkipDialog} onOpenChange={setShowSkipDialog}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Skip the Queue?</DialogTitle>
+            <DialogTitle>ต้องการแซงคิวหรือไม่?</DialogTitle>
             <DialogDescription>
-              This will cost 50 Hiu Hiu Hiu coins and move your order to the front of the line.
+              การทำเช่นนี้จะใช้ 50 เหรียญ หิว หิว หิว และเลื่อนออเดอร์ของคุณไปอยู่หน้าสุดของคิว
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-4">
             <div className="flex items-center justify-between p-4 bg-yellow-50 rounded-lg">
-              <span>Current balance:</span>
-              <span>{user?.coins} coins</span>
+              <span>ยอดคงเหลือปัจจุบัน:</span>
+              <span>{user?.coins} เหรียญ</span>
             </div>
             <div className="flex items-center justify-between p-4 bg-orange-50 rounded-lg">
-              <span>After skip:</span>
-              <span>{(user?.coins || 0) - 50} coins</span>
+              <span>หลังแซงคิว:</span>
+              <span>{(user?.coins || 0) - 50} เหรียญ</span>
             </div>
           </div>
           <DialogFooter>
             <Button variant="outline" onClick={() => setShowSkipDialog(false)}>
-              Cancel
+              ยกเลิก
             </Button>
             <Button onClick={handleSkipQueue} className="bg-yellow-500 hover:bg-yellow-600">
-              Confirm Skip
+              ยืนยันการแซงคิว
             </Button>
           </DialogFooter>
         </DialogContent>
@@ -201,14 +201,14 @@ export function OrderQueue({ order: initialOrder, onComplete }: OrderQueueProps)
       <Dialog open={showReviewDialog} onOpenChange={setShowReviewDialog}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>🎉 Your order is ready!</DialogTitle>
+            <DialogTitle>🎉 ออเดอร์ของคุณพร้อมแล้ว!</DialogTitle>
             <DialogDescription>
-              How was your experience? Share your thoughts with us!
+              ประสบการณ์ของคุณเป็นอย่างไรบ้าง? แบ่งปันความคิดเห็นของคุณกับเรา!
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-4">
             <div className="text-center space-y-2">
-              <p className="text-sm">Rate your meal</p>
+              <p className="text-sm">ให้คะแนนอาหารของคุณ</p>
               <div className="flex justify-center gap-2">
                 {[1, 2, 3, 4, 5].map(star => (
                   <button
@@ -226,7 +226,7 @@ export function OrderQueue({ order: initialOrder, onComplete }: OrderQueueProps)
               </div>
             </div>
             <Textarea
-              placeholder="Share your recipe or leave a review... (optional)"
+              placeholder="แบ่งปันสูตรของคุณหรือเขียนรีวิว... (ไม่บังคับ)"
               value={review}
               onChange={(e) => setReview(e.target.value)}
               rows={4}
@@ -234,11 +234,11 @@ export function OrderQueue({ order: initialOrder, onComplete }: OrderQueueProps)
           </div>
           <DialogFooter>
             <Button variant="outline" onClick={() => setShowReviewDialog(false)}>
-              Skip
+              ข้าม
             </Button>
             <Button onClick={handleSubmitReview}>
               <Send className="w-4 h-4 mr-2" />
-              Submit
+              ส่ง
             </Button>
           </DialogFooter>
         </DialogContent>
